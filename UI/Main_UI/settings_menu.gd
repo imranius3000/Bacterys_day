@@ -5,7 +5,7 @@ extends CanvasLayer
 
 
 func _on_return_button_pressed():
-	get_tree().change_scene_to_file("res://UI/main_ui/main_menu.tscn")
+	queue_free()
 
 func _ready():
 	update_options()

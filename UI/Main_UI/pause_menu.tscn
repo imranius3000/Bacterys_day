@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5ndljh3frk3y"]
+
+[ext_resource type="Script" uid="uid://b4oxnldd8w8lb" path="res://UI/Main_UI/pause_menu.gd" id="1_65v84"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_65v84")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect/MarginContainer"]
+custom_minimum_size = Vector2(180, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+
+[node name="GameNameLabel" type="Label" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Bacteria"
+
+[node name="ResumeB" type="Button" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "RESUME"
+
+[node name="SettingsB" type="Button" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "SETTINGS
+"
+
+[node name="MenuB" type="Button" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 30)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+text = "MENU"
+
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeB" to="." method="_on_resume_b_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsB" to="." method="_on_settings_b_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MenuB" to="." method="_on_quit_b_pressed"]

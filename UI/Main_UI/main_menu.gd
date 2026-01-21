@@ -4,7 +4,7 @@ extends CanvasLayer
 
 #Кнопка Играть
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://tscns/level_1.tscn")
+	get_tree().change_scene_to_file("res://Main/Level/level.tscn")
 
 #Кнопка Настроек
 func _on_settings_button_pressed():

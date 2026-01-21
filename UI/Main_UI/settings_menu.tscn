@@ -1,24 +1,36 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwmh08affvc8u"]
 
-[ext_resource type="Script" uid="uid://bpivxflligr3f" path="res://UI/main_ui/settings_menu.gd" id="1_31w2n"]
-[ext_resource type="PackedScene" uid="uid://lwf258bdima7" path="res://UI/vignette/dark_vignette.tscn" id="1_sraxi"]
+[ext_resource type="Script" uid="uid://bpivxflligr3f" path="res://UI/Main_UI/settings_menu.gd" id="1_31w2n"]
+[ext_resource type="PackedScene" path="res://UI/vignette/dark_vignette.tscn" id="1_sraxi"]
 
 [node name="SettingsMenu" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_31w2n")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.13319641, 0.13319641, 0.13319638, 1)
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/MarginContainer/PanelContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 16
@@ -26,60 +38,60 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="SettingsLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SettingsLabel" type="Label" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "SETTINGS"
 
-[node name="SFXContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SFXContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer"]
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 6
 text = "SFX VOLUME"
 
-[node name="SFXSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer"]
+[node name="SFXSlider" type="HSlider" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MusicContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MusicContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
 layout_mode = 2
 text = "MUSIC VOLUME"
 
-[node name="MusicSlider" type="HSlider" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
+[node name="MusicSlider" type="HSlider" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ResolutionContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ResolutionContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionContainer"]
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 6
 text = "FULL SCREEN"
 
-[node name="ResolutionButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionContainer"]
+[node name="ResolutionButton" type="Button" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "WINDOWED"
 
-[node name="ReturnButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ReturnButton" type="Button" parent="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -87,5 +99,5 @@ text = "BACK"
 
 [node name="DarkVignette" parent="." instance=ExtResource("1_sraxi")]
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionContainer/ResolutionButton" to="." method="_on_resolution_button_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResolutionContainer/ResolutionButton" to="." method="_on_resolution_button_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
