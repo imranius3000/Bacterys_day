@@ -1,28 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://buvingkbc4ifd"]
 
+[ext_resource type="Script" uid="uid://blvbi4setdjtq" path="res://UI/Main_UI/main_menu.gd" id="1_ahqt7"]
 [ext_resource type="PackedScene" path="res://UI/vignette/dark_vignette.tscn" id="1_p8ccj"]
 
-[sub_resource type="GDScript" id="GDScript_xbuu1"]
-script/source = "extends CanvasLayer
-var settings_menu = preload(\"res://UI/Main_UI/settings_menu.tscn\")
-
-
-#Кнопка Играть
-func _on_play_button_pressed():
-	get_tree().change_scene_to_file(\"res://Main/Level/level.tscn\")
-
-#Кнопка Настроек
-func _on_settings_button_pressed():
-	var settings_menu_instance = settings_menu.instantiate()
-	add_child(settings_menu_instance)
-
-#Кнопка выхода
-func _on_quit_button_pressed():
-	get_tree().quit()
-"
-
 [node name="MainMenu" type="CanvasLayer"]
-script = SubResource("GDScript_xbuu1")
+script = ExtResource("1_ahqt7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
